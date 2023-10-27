@@ -1,7 +1,5 @@
 # Pokder Detection via YOLO
 
-<b><a href='https://arxiv.org/abs/2308.14221'>High-Resolution Document Shadow Removal via A Large-Scale Real-World Dataset and A Frequency-Aware Shadow Erasing Net. (ICCV 23')</a> </b>
-
 <b>1 University of Melbourne, 2 Monash University</b>
 
 <div>
