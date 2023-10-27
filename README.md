@@ -1,8 +1,6 @@
 # Poker Detection via YOLO
 
-<b>This project aims to provide technical support for bridge card games by detecting the suit, rank, position, and orientation of playing cards. The project is based on the YOLOv7 framework and collects data from various scenarios. We have also developed methods to synthesize data to improve the model’s accuracy. In the end, we achieved an impressive mAP@0.5 score of 0.959, indicating that our model exhibits excellent accuracy.</b>
-
-<b>1 University of Melbourne, 2 Monash University</b>
+<b>This project aims to provide technical support for bridge card games by detecting the suit, rank, position, and orientation of playing cards. The project is based on the YOLOv7 framework and collects data from various scenarios. We have also developed methods to synthesize data to improve the model’s accuracy. In the end, we achieved an impressive mAP@0.5 score of 0.959, indicating that our model exhibits excellent accuracy.</b>
 
 <div>
 <span class="author-block">
@@ -16,6 +14,8 @@
   </span>
 </span>
 </div>
+
+<b>1 University of Melbourne, 2 Monash University</b>
 
 [Report](https://drive.google.com/file/d/1cv6HpQf7eOi5dAcdiIFNgA4EwON8eJOj/view?usp=sharing) | [Project]() | [Demo Video](https://drive.google.com/file/d/1iDWGuduPtOSstAOGMgjpKQoGB3QCjBOw/view?usp=sharing) | [Weights (Card)](https://drive.google.com/file/d/1WbRC7j9wM36FmfNsIzc1e2-Xtx-kP6Ho/view?usp=sharing) | [Weights (Orientation)](https://drive.google.com/file/d/1Q51nyhbVRoN9_pE614bpP4RYzZ3Jc0Hi/view?usp=sharing)
 ---
