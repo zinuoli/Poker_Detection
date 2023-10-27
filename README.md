@@ -17,7 +17,7 @@
 
 [Report](https://arxiv.org/abs/2308.14221) | [Project](https://cxh-research.github.io/DocShadow-SD7K/) | [Datasets (Google)](https://pan.baidu.com/s/1PgJ3cPR3OYO7gwF1o0DgDg?pwd=72aq) | [Weights (Google)](https://pan.baidu.com/s/1PgJ3cPR3OYO7gwF1o0DgDg?pwd=72aq)
 ---
-### Usage
+# ⚙️ Usage
 1. In **card_detect** project specify **save_dir** in **video_split.py**, run it to gain the screenshots of video in a directory ⟨D⟩.
 2. In **card_detect** project, run:
 ```
