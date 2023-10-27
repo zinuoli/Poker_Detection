@@ -1,7 +1,7 @@
 # Poker Detection via YOLO
 
 <b>This project aims to provide technical support for bridge card games by detecting the suit, rank, position, and orientation of playing cards. The project is based on the YOLOv7 framework and collects data from various scenarios. We have also developed methods to synthesize data to improve the model’s accuracy. In the end, we achieved an impressive mAP@0.5 score of 0.959, indicating that our model exhibits excellent accuracy.</b>
----
+
 <div>
 <span class="author-block">
   <a href='https://scholar.google.com/citations?user=YSg_iL4AAAAJ&hl=en'>Haopeng Li</a><sup> 1 </sup>
