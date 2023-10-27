@@ -16,6 +16,7 @@
 </div>
 
 [Report](https://arxiv.org/abs/2308.14221) | [Project](https://cxh-research.github.io/DocShadow-SD7K/) | [Datasets (Google)](https://pan.baidu.com/s/1PgJ3cPR3OYO7gwF1o0DgDg?pwd=72aq) | [Weights (Google)](https://pan.baidu.com/s/1PgJ3cPR3OYO7gwF1o0DgDg?pwd=72aq)
+---
 <img src="https://github.com/zinuoli/Poker_Detection/assets/94612909/137ba7b4-74b0-44f1-9508-8d575ee7f40a">
 ---
 # ⚙️ Usage
