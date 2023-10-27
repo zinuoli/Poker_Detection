@@ -19,7 +19,7 @@
 ---
 ### Usage
 ```
-1. In <b>card_detec project</b>, specify save dir in video split.py, run it to gain the screenshots of video in a directory ⟨D⟩.
+1. In **card_detec project specify save dir in video split.py, run it to gain the screenshots of video in a directory ⟨D⟩.
 ```
 
 
