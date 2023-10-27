@@ -1,4 +1,4 @@
-# Pokder Detection via YOLO
+# Poker Detection via YOLO
 
 <b>1 University of Melbourne, 2 Monash University</b>
 
