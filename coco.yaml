@@ -1,0 +1,18 @@
+# COCO 2017 dataset http://cocodataset.org
+
+# download command/URL (optional)
+#download: bash ./scripts/get_coco.sh
+
+# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+train: /data/lzn/full_poker/train.txt # 118287 images
+val: /data/lzn/full_poker/val.txt  # 5000 images
+test: /data/lzn/full_poker/test.txt # 20288 of 40670 images, submit to https://competitions.codalab.org/competitions/20794
+
+# number of classes
+nc: 54
+names: ['JC', 'back', '8H', '8S', 'JS', 'AS', '3C', '7C', '3D', '6S',
+        '2H', '6C', 'KH', '10D', '5H', '4S', '7D', '5S', 'QS', 'KD',
+        '3H', '2D', '2C', '5C', 'QC', '4D', 'AH', 'KS', '2S', 'unknown',
+        '7H', 'AC', '8C', '5D', '9S', '10H', 'AD', '8D', '4C', '3S',
+        'KC', '4H', '7S', 'QH', 'QD', 'JH', '6H', '6D', '9H', '9C',
+        'JD', '10S', '9D', '10C']
