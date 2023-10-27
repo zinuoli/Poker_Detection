@@ -29,7 +29,7 @@
 4. Copy ⟨D⟩ and ⟨N⟩/labels above to **orientation_detect** project, and rename /labels to ⟨D⟩_res. For example, ⟨D⟩ is test_video so the ⟨D⟩_res will be test_video_res.
 5. In seg table infer project, run:
 ```
-python -u segment/predict.py -–weights orientation_detection.pt -–source ⟨D⟩ –name <specify_your_name_here>
+python -u segment/predict.py -–weights orientation_detection.pt -–source ⟨D⟩ –-name <specify_your_name_here>
 ```
 6. In **orientation_detect** project, find image results in orientation_detect/runs/predict-seg/⟨N⟩/vis.
 7. In **orientation_detect** project, specify image folder in merge **images.py** and run it to obtain final video result.
