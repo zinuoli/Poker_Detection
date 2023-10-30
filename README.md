@@ -21,6 +21,7 @@
 ---
 <img src="https://github.com/zinuoli/Poker_Detection/assets/94612909/137ba7b4-74b0-44f1-9508-8d575ee7f40a">
 The label consists of two parts: the suit and ranking of the card, and the angle.
+2H 82 means this card is 2 Heart and the angle between this card and the table closest to it is 82 degrees.
 
 # ⚙️ Usage
 1. In **card_detect** project specify **save_dir** in **video_split.py**, run it to gain the screenshots of video in a directory ⟨D⟩.
