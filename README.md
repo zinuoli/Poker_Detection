@@ -20,7 +20,7 @@
 [Report](https://drive.google.com/file/d/1cv6HpQf7eOi5dAcdiIFNgA4EwON8eJOj/view?usp=sharing) | [Dataset](https://1drv.ms/u/s!AglHNUXUeno-hDQ_soEb_aWLIjEm?e=0bTYDm) | [Demo Video](https://drive.google.com/file/d/1iDWGuduPtOSstAOGMgjpKQoGB3QCjBOw/view?usp=sharing) | [Weights (Card)](https://drive.google.com/file/d/1WbRC7j9wM36FmfNsIzc1e2-Xtx-kP6Ho/view?usp=sharing) | [Weights (Orientation)](https://drive.google.com/file/d/1Q51nyhbVRoN9_pE614bpP4RYzZ3Jc0Hi/view?usp=sharing)
 ---
 <img src="https://github.com/zinuoli/Poker_Detection/assets/94612909/137ba7b4-74b0-44f1-9508-8d575ee7f40a">
-The label consists of two parts: the number and suit of the card, followed by the angle. 2H 82 means this card is 2 Heart and the angle between this card and the table closest to it is 82 degrees. B means back. For more information, please see <a href='https://drive.google.com/file/d/1cv6HpQf7eOi5dAcdiIFNgA4EwON8eJOj/view?usp=sharing'>Report.</a>
+The label consists of two parts: the number and suit of the card, followed by the angle. 2H 82 means this card is 2 Heart and the angle between this card and the table edge closest to it is 82 degrees. B means back. For more information, please see <a href='https://drive.google.com/file/d/1cv6HpQf7eOi5dAcdiIFNgA4EwON8eJOj/view?usp=sharing'>Report.</a>
 
 # ⚙️ Usage
 1. In **card_detect** project specify **save_dir** in **video_split.py**, run it to gain the screenshots of video in a directory ⟨D⟩.
