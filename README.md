@@ -29,6 +29,7 @@ pip install -r requirements.txt
 cd multi-object-tracker
 pip install -e .
 ```
+<b>Run script according to the following steps:</b>
 1. In **card_detect** project specify **save_dir** in **video_split.py**, run it to gain the screenshots of video in a directory ⟨D⟩.
 2. In **card_detect** project, run:
 ```
