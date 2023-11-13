@@ -23,7 +23,7 @@ The author sequence grouped by institutions.
 ---
 ![image](https://github.com/zinuoli/Poker_Detection/assets/94612909/9545a00d-52ba-4c46-ac81-58285d02fca3)
 
-The label consists of two parts: the number and suit of the card, followed by the angle. For example, 2H 81 means this card is 2 Heart and the angle between this card and the table edge closest to it is 81 degrees. B means back. For more information, please see <a href='https://drive.google.com/file/d/1cv6HpQf7eOi5dAcdiIFNgA4EwON8eJOj/view?usp=sharing'>Report.</a>
+The label consists of two parts: the number and suit of the card, followed by the angle. For example, 2H 81 means this card is 2 Heart, and the angle between this card and the table edge closest to it is 81 degrees. B means back. For more information, please see <a href='https://drive.google.com/file/d/1cv6HpQf7eOi5dAcdiIFNgA4EwON8eJOj/view?usp=sharing'>Report.</a>
 
 # ⚙️ Usage
 To run this script, the **environment** should be first installed. Please check requirements.txt and download <a href='https://drive.google.com/file/d/18pO7Vzpr9MN__jMfB9bR3V_WUoGNKvDP/view?usp=sharing'>multi-object-tracker.</a>
