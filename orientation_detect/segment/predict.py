@@ -59,6 +59,7 @@ from utils.segment.plots import plot_masks
 from utils.torch_utils import select_device, smart_inference_mode
 import numpy as np
 from utils.general import *
+from motrackers import IOUTracker
 
 
 card_name = [
@@ -131,7 +132,7 @@ def run(
     device="",  # cuda device, i.e. 0 or 0,1,2,3 or cpu
     view_img=False,  # show results
     save_txt=False,  # save results to *.txt
-    save_conf=False,  # save confidences in --save-txt test_video_res
+    save_conf=False,  # save confidences in --save-txt labels
     save_crop=False,  # save cropped prediction boxes
     nosave=False,  # do not save images/videos
     classes=None,  # filter by class: --class 0, or --class 0 2 3
@@ -143,11 +144,78 @@ def run(
     name="exp",  # save results to project/name
     exist_ok=False,  # existing project/name ok, do not increment
     line_thickness=3,  # bounding box thickness (pixels)
-    hide_labels=False,  # hide test_video_res
+    hide_labels=False,  # hide labels
     hide_conf=False,  # hide confidences
     half=False,  # use FP16 half-precision inference
     dnn=False,  # use OpenCV DNN for ONNX inference
 ):
+    tracker = IOUTracker(iou_threshold=0.8)
+
+    res_root = source + "_res"
+    res_files = sorted(os.listdir(res_root))
+
+    id_box = {}
+    id_list = []
+    cls_list = []
+
+    for i, res_file in enumerate(res_files):
+        res_file_path = os.path.join(res_root, res_file)
+        with open(res_file_path, "r") as f:
+            lines = f.readlines()
+        detection_class_ids = []
+        detection_boxes = []
+        detection_confidences = []
+        cls_temp = []
+        for line in lines:
+            cls, x1, y1, x2, y2, conf = [eval(x) for x in line.strip().split(" ")[:6]]
+            detection_class_ids.append(cls)
+            detection_boxes.append([x1, y1, x2, y2])
+            detection_confidences.append(conf)
+        detection_class_ids = np.array(detection_class_ids)
+        boxes = np.array(detection_boxes)
+        boxes_ = boxes.copy()
+        boxes_[:, 0] = boxes[:, 0] - boxes[:, 2] / 2
+        boxes_[:, 1] = boxes[:, 1] - boxes[:, 3] / 2
+
+        id_temp = []
+
+        output_tracks = tracker.update(
+            boxes_, detection_confidences, detection_class_ids
+        )
+        for track in output_tracks:
+            (
+                frame,
+                id,
+                bb_left,
+                bb_top,
+                bb_width,
+                bb_height,
+                confidence,
+                x,
+                y,
+                z,
+                c,
+            ) = track
+            if not id in id_box:
+                id_box[id] = []
+            id_box[id].append(
+                [
+                    bb_left,
+                    bb_top,
+                    bb_width,
+                    bb_height,
+                ]
+            )
+            id_temp.append(id)
+            cls_temp.append(c)
+        id_list.append(id_temp)
+        cls_list.append(cls_temp)
+
+    for id in id_box:
+        l = len(id_box[id])
+        start = min(3, l - 1)
+        id_box[id] = np.array(id_box[id][start:]).mean(axis=0)
+
     source = str(source)
     save_img = not nosave and not source.endswith(".txt")  # save inference images
     is_file = Path(source).suffix[1:] in (IMG_FORMATS + VID_FORMATS)
@@ -184,6 +252,8 @@ def run(
     model.warmup(imgsz=(1 if pt else bs, 3, *imgsz))  # warmup
     seen, windows, dt = 0, [], (Profile(), Profile(), Profile())
     times = 0
+    cnt = 0
+    id2angle = {}
     for path, im, im0s, vid_cap, s in dataset:
         im0s_ = cv2.GaussianBlur(im0s, (11, 11), 5)
         if times == 0:
@@ -349,8 +419,8 @@ def run(
         if not os.path.exists(label_path):
             continue
 
-        with open(label_path) as f:
-            objs = f.readlines()
+        objs = id_list[cnt]
+
         edges = cv2.Canny(im0s_, 100, 150)
         W, H = im0s.shape[1], im0s.shape[0]
         line_list = []
@@ -358,11 +428,11 @@ def run(
         error_obj = []
 
         for i, obj in enumerate(objs):
-            x, y, w, h = [eval(p) for p in obj.split(" ")[1:5]]
-            xmin = int(x * W - w * W / 2)
-            ymin = int(y * H - h * H / 2)
-            xmax = int(x * W + w * W / 2)
-            ymax = int(y * H + h * H / 2)
+            x, y, w, h = id_box[obj].tolist()
+            xmin = int(x * W)
+            ymin = int(y * H)
+            xmax = int((x + w) * W)
+            ymax = int((y + h) * H)
             cropped_edges = edges[ymin:ymax, xmin:xmax]
 
             lines = cv2.HoughLinesP(
@@ -432,17 +502,20 @@ def run(
                 res_dict[t] = (angle, i)
 
         for i, obj in enumerate(objs):
-            cls_id, x, y, w, h, prob = [eval(p) for p in obj.split(" ")]
-            cls_name = card_name[int(cls_id)]
-            xmin = int(x * W - w * W / 2)
-            ymin = int(y * H - h * H / 2)
-            xmax = int(x * W + w * W / 2)
-            ymax = int(y * H + h * H / 2)
-            if i in res_dict:
-                angle, t = res_dict[i]
+            x, y, w, h = id_box[obj].tolist()
+            xmin = int(x * W)
+            ymin = int(y * H)
+            xmax = int((x + w) * W)
+            ymax = int((y + h) * H)
+            if obj in id2angle:
+                angle, t = id2angle[obj]
             else:
-                angle = "?"
-                t = 4
+                if i in res_dict:
+                    angle, t = res_dict[i]
+                else:
+                    angle = "?"
+                    t = 4
+                id2angle[obj] = (angle, t)
             random_color = hex[t]
             # cv2.rectangle(im0s, (xmin, ymin), (xmax, ymax), random_color, 2)
             # cv2.putText(
@@ -459,6 +532,7 @@ def run(
             cv2.rectangle(im0s, p1, p2, random_color, thickness=2, lineType=cv2.LINE_AA)
             lw = 3
             tf = max(lw - 1, 1)
+            cls_name = card_name[cls_list[cnt][i]]
             cls_name = " ".join([cls_name, angle])
             w, h = cv2.getTextSize(cls_name, 0, fontScale=lw / 3, thickness=tf)[0]
             p2 = p1[0] + w, p1[1] - h - 3
@@ -503,6 +577,7 @@ def run(
                 f.write(f"{angle} {id2player[t]}\n")
         print(label_path)
         cv2.imwrite(os.path.join(vis_root, Path(path).name), im0s)
+        cnt += 1
 
 
 def parse_opt():
@@ -550,7 +625,7 @@ def parse_opt():
     parser.add_argument("--view-img", action="store_true", help="show results")
     parser.add_argument("--save-txt", action="store_true", help="save results to *.txt")
     parser.add_argument(
-        "--save-conf", action="store_true", help="save confidences in --save-txt test_video_res"
+        "--save-conf", action="store_true", help="save confidences in --save-txt labels"
     )
     parser.add_argument(
         "--save-crop", action="store_true", help="save cropped prediction boxes"
@@ -583,6 +658,9 @@ def parse_opt():
     )
     parser.add_argument(
         "--line-thickness", default=3, type=int, help="bounding box thickness (pixels)"
+    )
+    parser.add_argument(
+        "--hide-labels", default=False, action="store_true", help="hide labels"
     )
     parser.add_argument(
         "--hide-conf", default=False, action="store_true", help="hide confidences"
