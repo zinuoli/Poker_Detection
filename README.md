@@ -46,3 +46,6 @@ python -u segment/predict.py -–weights orientation_detection.pt -–source ⟨
 ```
 6. In **orientation_detect** project, find image results in orientation_detect/runs/predict-seg/⟨N⟩/vis.
 7. In **orientation_detect** project, specify image folder in merge **images.py** and run it to obtain final video result.
+
+# 💗 Acknowledgements
+This project used the code implementation of <a href="https://github.com/WongKinYiu/yolov7">YOLOv7</a>, we appreciate their great work. If you are looking for more applications, please refer to them.
