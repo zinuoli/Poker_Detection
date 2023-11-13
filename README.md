@@ -17,7 +17,7 @@
 
 <b>1 University of Melbourne, 2 Monash University</b>
 
-The authors are grouped by their respective institutions.
+The author sequence grouped by institutions.
 
 [Report](https://drive.google.com/file/d/1cv6HpQf7eOi5dAcdiIFNgA4EwON8eJOj/view?usp=sharing) | [Dataset](https://1drv.ms/u/s!AglHNUXUeno-hDQ_soEb_aWLIjEm?e=0bTYDm) | [Demo Video](https://drive.google.com/file/d/1M-vq04_nFCIuJdH-3sbhTt_wfKZIyP7l/view?usp=sharing) | [Weights (Card)](https://drive.google.com/file/d/1WbRC7j9wM36FmfNsIzc1e2-Xtx-kP6Ho/view?usp=sharing) | [Weights (Orientation)](https://drive.google.com/file/d/1Q51nyhbVRoN9_pE614bpP4RYzZ3Jc0Hi/view?usp=sharing)
 ---
