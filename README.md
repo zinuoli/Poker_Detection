@@ -26,7 +26,7 @@ The label consists of two parts: the number and suit of the card, followed by th
 1. In **card_detect** project specify **save_dir** in **video_split.py**, run it to gain the screenshots of video in a directory ⟨D⟩.
 2. In **card_detect** project, run:
 ```
- python detect.py -–weights card_detection.pt –-source ⟨D⟩ –-name ⟨N⟩ –-save-txt -–nosave –save-conf
+ python detect.py -–weights card_detection.pt –-source ⟨D⟩ –-name ⟨N⟩ –-save-txt -–nosave –-save-conf
 ```
 3. Find corresponding txt results in **card_detect/runs/detect/⟨N⟩/labels.**
 4. Copy ⟨D⟩ and ⟨N⟩/labels above to **orientation_detect** project, and rename /labels to ⟨D⟩_res. For example, ⟨D⟩ is test_video so the ⟨D⟩_res will be test_video_res.
