@@ -23,6 +23,7 @@
 The label consists of two parts: the number and suit of the card, followed by the angle. 2H 82 means this card is 2 Heart and the angle between this card and the table edge closest to it is 82 degrees. B means back. For more information, please see <a href='https://drive.google.com/file/d/1cv6HpQf7eOi5dAcdiIFNgA4EwON8eJOj/view?usp=sharing'>Report.</a>
 
 # ⚙️ Usage
+To run this script, the environment should be first installed. Please check requirements.txt and download <a href='https://drive.google.com/file/d/18pO7Vzpr9MN__jMfB9bR3V_WUoGNKvDP/view?usp=sharing'>multi-object-tracker.</a>
 1. In **card_detect** project specify **save_dir** in **video_split.py**, run it to gain the screenshots of video in a directory ⟨D⟩.
 2. In **card_detect** project, run:
 ```
