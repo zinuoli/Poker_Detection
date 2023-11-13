@@ -4,7 +4,7 @@
 
 <div>
 <span class="author-block">
-  <a href='https://scholar.google.com/citations?user=YSg_iL4AAAAJ&hl=en'>Haopeng Li</a><sup> 1 </sup>
+  <a href='https://hoplee6.github.io/'>Haopeng Li</a><sup> 1 </sup>
 </span>,
   <span class="author-block">
     <a href='https://zinuoli.github.io/'>Zinuo Li</a><sup> 2 </sup>
