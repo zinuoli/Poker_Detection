@@ -10,12 +10,12 @@
     <a href='https://zinuoli.github.io/'>Zinuo Li</a><sup> 2 </sup>
   </span> and
   <span class="author-block">
-    <a href="https://research.monash.edu/en/persons/qiuhong-ke" target="_blank">Qiuhong Ke</a><sup> 2 </sup>
+    <a href="https://research.monash.edu/en/persons/qiuhong-ke" target="_blank">Qiuhong Ke</a><sup> 3 </sup>
   </span>
 </span>
 </div>
 
-<b>1 University of Melbourne, 2 Monash University</b>
+<b>1 University of Melbourne, 2 University of Western Australia, 3 Monash University</b>
 
 The author sequence is grouped by institutions.
 
